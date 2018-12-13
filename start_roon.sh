@@ -3,8 +3,7 @@
 docker run -d \
     --name roon \
     --restart unless-stopped \
-    --network macvlan \
-    --ip 192.168.0.7 \
+    --network host \
     --mount source=roon-data,target=/roon/data \
-    -v /media/BigBeat/Music:/music \
+    -v /path/to/my/music:/music \
     roon

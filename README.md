@@ -8,7 +8,7 @@ Use a run command like the following to map a folder of music into it:
 docker run -d \
     --name roon \
     --restart unless-stopped \
-    --network=host
+    --network host
     --mount source=roon-data,target=/roon/data \
     -v /path/to/my/music:/music \
     roon

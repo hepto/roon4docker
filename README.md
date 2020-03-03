@@ -8,13 +8,15 @@ Use a run command like the following to map a folder of music into it:
 docker run -d \
     --name roon \
     --restart unless-stopped \
-    --network host
+    --network host \
     --mount source=roon-data,target=/roon/data \
-    -v /path/to/my/music:/music \
-    roon
+    -v /path/to.music:/music \
+    -v /path/for/bakups:/backup \
+    --device /dev/snd \
+    hepto/roon4docker
 ````
     
-Then go through the Roon setup in your browser as per Roon instructions, and select /music as the music source.
+Then go through the Roon setup in your browser as per Roon instructions, and select /music as the music source, and /backup for backups
 
 (note: bit of a cheat but this uses host networking to ensure all ports are available and any broadcast traffic works, thus the source IP will be that of the Docker host.)
 

@@ -1,11 +1,13 @@
-FROM ubuntu 
+FROM debian:stable-slim 
+
+RUN apt-get update && apt-get --no-install-recommends install -y \
+  curl \
+  bzip2 \
+  ffmpeg \
+  cifs-utils \
+  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /roon
-
-RUN apt-get update && apt-get install -y \
-	curl \	
-	ffmpeg \
-	cifs-utils
 
 RUN curl http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 | tar xvj
 

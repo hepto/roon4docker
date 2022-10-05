@@ -1,6 +1,7 @@
 FROM debian:stable-slim 
 
 RUN apt-get update && apt-get --no-install-recommends install -y \
+  ca-certificates \
   curl \
   bzip2 \
   ffmpeg \
@@ -9,7 +10,7 @@ RUN apt-get update && apt-get --no-install-recommends install -y \
 
 WORKDIR /roon
 
-RUN curl http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 | tar xvj
+RUN curl -L https://download.roonlabs.net/builds/RoonServer_linuxx64.tar.bz2 | tar xvj
 
 ENV ROON_DATAROOT=/roon/data
 
